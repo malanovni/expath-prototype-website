@@ -35,4 +35,4 @@ npm test
 - Map tiles: `https://demotiles.maplibre.org/style.json` (public demo). Swap to your tileserver for production.
 - Ready for new addresses: add entries to `categories` or `routes`; UI auto-renders checkboxes and map layers.
 
-# Navigrate
+# Expath

@@ -825,29 +825,3 @@ export const routes = [
     ]
   }
 ];
-
-// ============================================================================
-// FAQ DATA (Optimized for AI/Direct Answers)
-// ============================================================================
-export const faqs = [
-  {
-    question: "How do I pay for the metro in Valencia?",
-    answer: "You can pay for the metro in Valencia using a contactless credit card (SUMA) directly at the turnstiles, or by purchasing a reusable SUMA card at station machines. A single ticket costs ~€1.50, but a 10-trip SUMA card (~€4.80) is much cheaper for tourists."
-  },
-  {
-    question: "Does Valencia have Uber or Bolt?",
-    answer: "Yes, both Uber and Bolt operate in Valencia, along with Cabify and the local FreeNow taxi app. Taxis are generally affordable and safe."
-  },
-  {
-    question: "What is the best way to get from Valencia Airport to the city center?",
-    answer: "The metro is the fastest option. Take Line 3 (Red) or Line 5 (Green) directly from the airport terminal to Xàtiva (city center) or Colón. The journey takes about 20 minutes and costs approx €4.80 (Zone ABC)."
-  },
-  {
-    question: "Is tap water safe to drink in Valencia?",
-    answer: "Yes, tap water in Valencia is perfectly safe to drink and meet strict EU health standards. However, it has a high mineral content (hard water) which creates a strong taste, so many locals prefer filtered or bottled water."
-  },
-  {
-    question: "When are shops closed in Valencia?",
-    answer: "Most shops in Valencia close on Sundays. Large department stores like El Corte Inglés and some malls (like Aqua or Arena) may open on specific Sundays, but general retail and supermarkets are closed."
-  }
-];

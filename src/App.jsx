@@ -4,12 +4,13 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import {
   Landmark, Coffee, Building2, Music, Hospital, Dumbbell,
   TrainFront, TramFront, Search, Map as MapIcon, Layers, Info, Globe,
-  Clock, ArrowRight, X, Eye, Languages, ChevronDown, Navigation2, ChevronUp, Navigation
+  Clock, ArrowRight, X, Eye, Languages, ChevronDown, Navigation2, ChevronUp, Navigation, HelpCircle
 } from "lucide-react";
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/SEO';
-import { categories, routes, metroLines, metroGuide, viewBounds } from "./data/valencia.js";
+import FAQ from './components/FAQ';
+import { categories, routes, metroLines, metroGuide, viewBounds, faqs } from "./data/valencia.js";
 import { languages, getTranslation } from "./data/i18n.js";
 import "./styles.css";
 
@@ -340,6 +341,12 @@ const App = () => {
           description: "Explore transit layers and bike paths across Valencia.",
           keywords: "Valencia routes, bike paths, transit, navigation"
         };
+      case 'faq':
+        return {
+          title: "FAQ",
+          description: "Common questions about Valencia transport, safety, and tips.",
+          keywords: "Valencia FAQ, travel questions, metro payment, safety"
+        };
       default:
         return {
           title: "Valencia Interactive Map",
@@ -645,6 +652,9 @@ const App = () => {
               <button className={`nav-tab ${activeTab === "routes" ? "active" : ""}`} onClick={() => setActiveTab("routes")}>
                 <Layers size={16} /> {t("routes")}
               </button>
+              <button className={`nav-tab ${activeTab === "faq" ? "active" : ""}`} onClick={() => setActiveTab("faq")}>
+                <HelpCircle size={16} /> FAQ
+              </button>
             </nav>
           </header>
 
@@ -714,6 +724,8 @@ const App = () => {
                 ))}
               </>
             )}
+
+            {activeTab === "faq" && <FAQ data={faqs} t={t} />}
           </div>
         </aside>
 

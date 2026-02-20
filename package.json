@@ -1,5 +1,5 @@
 {
-  "name": "navigrate",
+  "name": "Expath",
   "version": "2.0.0",
   "description": "Interactive Valencia map (React + MapLibre) with routes and POI toggles.",
   "type": "module",

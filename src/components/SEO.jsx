@@ -9,13 +9,13 @@ const SEO = ({
     url = "https://expath.vercel.app",
     lang = 'en'
 }) => {
-    const siteTitle = "Navigrate - Valencia Interactive Map";
+    const siteTitle = "Expath - Valencia Interactive Map";
     const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
 
     const schema = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Navigrate Valencia",
+        "name": "Expath Valencia",
         "description": description || "Interactive Valencia travel guide with landmarks, metro network, and local tips.",
         "url": url,
         "applicationCategory": "TravelApplication",
@@ -27,7 +27,13 @@ const SEO = ({
         },
         "author": {
             "@type": "Organization",
-            "name": "Navigrate"
+            "name": "Expath",
+            "url": "https://expath.vercel.app",
+            "logo": "https://expath.vercel.app/logo.png",
+            "sameAs": [
+                "https://twitter.com/Expath_app",
+                "https://instagram.com/Expath_valencia"
+            ]
         }
     };
 
@@ -46,7 +52,7 @@ const SEO = ({
             <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
             <meta property="og:image" content={image} />
-            <meta property="og:site_name" content="Navigrate Valencia" />
+            <meta property="og:site_name" content="Expath Valencia" />
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />

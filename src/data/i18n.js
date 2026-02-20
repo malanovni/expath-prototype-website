@@ -15,7 +15,7 @@ export const languages = [
 
 export const translations = {
     en: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Places",
         guide: "Guide",
         routes: "Routes",
@@ -55,7 +55,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     es: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Lugares",
         guide: "Guía",
         routes: "Rutas",
@@ -95,7 +95,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     ru: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Места",
         guide: "Гид",
         routes: "Маршруты",
@@ -135,7 +135,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     fr: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Lieux",
         guide: "Guide",
         routes: "Itinéraires",
@@ -175,7 +175,7 @@ export const translations = {
         appleMaps: "Plans (Apple)"
     },
     pt: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Lugares",
         guide: "Guia",
         routes: "Rotas",
@@ -215,7 +215,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     pl: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Miejsca",
         guide: "Przewodnik",
         routes: "Trasy",
@@ -255,7 +255,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     uk: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Місця",
         guide: "Гід",
         routes: "Маршрути",
@@ -295,7 +295,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     ar: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "الأماكن",
         guide: "الدليل",
         routes: "المسارات",
@@ -335,7 +335,7 @@ export const translations = {
         appleMaps: "Apple Maps"
     },
     hr: {
-        brand: "Navigrate",
+        brand: "Expath",
         places: "Mjesta",
         guide: "Vodič",
         routes: "Rute",
