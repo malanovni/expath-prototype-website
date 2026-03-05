@@ -256,20 +256,6 @@ const addMapLayers = (map) => {
       }
     });
 
-    // Neon Glow Layer (Behind everything)
-    map.addLayer({
-      id: `${route.id}-glow`,
-      type: "line",
-      source: route.id,
-      layout: { "line-cap": "round", "line-join": "round" },
-      paint: {
-        "line-color": route.color,
-        "line-width": route.width * 3,
-        "line-opacity": 0.4,
-        "line-blur": 3
-      }
-    });
-
     map.addLayer({
       id: `${route.id}-outline`,
       type: "line",
@@ -317,6 +303,8 @@ const App = () => {
   const [drawerCollapsed, setDrawerCollapsed] = useState(false);
   const [currentZoom, setCurrentZoom] = useState(11); // Track zoom for semantic labels
   const userMarkerRef = useRef(null);
+  const isRequestingLocation = useRef(false);
+  const lastMarkerUpdateZoom = useRef(11);
 
   const t = (key) => getTranslation(lang, key);
 
@@ -417,12 +405,20 @@ const App = () => {
     return () => map.remove();
   }, []);
 
-  // Zoom listener for semantic labels
+  // Zoom listener - only update labels when crossing the label threshold
   useEffect(() => {
     if (!mapRef.current) return;
-    const handleZoom = () => setCurrentZoom(mapRef.current.getZoom());
-    mapRef.current.on("zoom", handleZoom);
-    return () => mapRef.current?.off("zoom", handleZoom);
+    const handleZoom = () => {
+      const newZoom = mapRef.current.getZoom();
+      const wasAboveThreshold = lastMarkerUpdateZoom.current >= 14;
+      const isAboveThreshold = newZoom >= 14;
+      if (wasAboveThreshold !== isAboveThreshold) { // Only update when crossing the label threshold
+        lastMarkerUpdateZoom.current = newZoom;
+        setCurrentZoom(newZoom);
+      }
+    };
+    mapRef.current.on("zoomend", handleZoom);
+    return () => mapRef.current?.off("zoomend", handleZoom);
   }, [isMapReady]);
 
   // Pitch toggle
@@ -452,27 +448,38 @@ const App = () => {
         userMarkerRef.current.remove();
         userMarkerRef.current = null;
       }
+      isRequestingLocation.current = false;
     } else {
       // Request location - only real location, no fallback
+      if (isRequestingLocation.current) return; // Prevent multiple requests
+      isRequestingLocation.current = true;
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const coords = [position.coords.longitude, position.coords.latitude];
             showLocationMarker(coords);
+            isRequestingLocation.current = false;
           },
           (error) => {
             console.error("Geolocation error:", error.message);
+            isRequestingLocation.current = false;
             // No fallback - just log the error
           },
           { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
         );
       } else {
         console.error("Geolocation is not supported by this browser.");
+        isRequestingLocation.current = false;
       }
     }
   };
 
   const showLocationMarker = (coords) => {
+    // Remove existing marker if any
+    if (userMarkerRef.current) {
+      userMarkerRef.current.remove();
+    }
+
     setUserLocation(coords);
     setShowUserLocation(true);
 
@@ -504,12 +511,10 @@ const App = () => {
     categories.forEach(cat => {
       if (!visibleCategories.has(cat.id)) return;
 
-      // Zoom thresholds based on importance
-      const zoomThresholds = { 1: 11, 2: 13, 3: 14.5 };
-      const minZoom = zoomThresholds[cat.importance] || 11;
-
-      // Don't render markers for this category if zoom is below threshold
-      if (currentZoom < minZoom) return;
+      // Always show markers regardless of zoom level
+      // const zoomThresholds = { 1: 3, 2: 4, 3: 5 };
+      // const minZoom = zoomThresholds[cat.importance] || 3;
+      // if (currentZoom < minZoom) return;
 
       // Show labels only at higher zoom levels (zoom >= 14)
       const showLabels = currentZoom >= 14;
@@ -568,7 +573,30 @@ const App = () => {
       });
     });
 
-  }, [isMapReady, visibleCategories, searchQuery, focusedMarkerId, clearFocus, lang, currentZoom]);
+  }, [isMapReady, visibleCategories, searchQuery, focusedMarkerId, clearFocus, lang]);
+
+  // Update marker labels when zoom crosses the label threshold
+  useEffect(() => {
+    if (!isMapReady) return;
+    const showLabels = currentZoom >= 14;
+    markersRef.current.forEach(({ marker, id }) => {
+      const el = marker.getElement();
+      if (el) {
+        const root = el._reactRoot || createRoot(el);
+        el._reactRoot = root;
+        // Find the category and feature for this marker
+        const [catId, idx] = id.split('-');
+        const cat = categories.find(c => c.id === catId);
+        if (cat) {
+          const feature = cat.features[parseInt(idx)];
+          if (feature) {
+            const isDimmed = focusedMarkerId !== null && focusedMarkerId !== id;
+            root.render(<CustomMarker iconKey={cat.iconKey} color={cat.color} dimmed={isDimmed} label={feature.name} showLabel={showLabels} />);
+          }
+        }
+      }
+    });
+  }, [currentZoom, focusedMarkerId]);
 
   // Route Visibility (hide irrelevant lines when station focused)
   useEffect(() => {
@@ -602,10 +630,26 @@ const App = () => {
     setVisibleCategories(next);
   };
 
+  const selectAllCategories = () => {
+    setVisibleCategories(new Set(categories.map(c => c.id)));
+  };
+
+  const deselectAllCategories = () => {
+    setVisibleCategories(new Set());
+  };
+
   const toggleRoute = (id) => {
     const next = new Set(visibleRoutes);
     next.has(id) ? next.delete(id) : next.add(id);
     setVisibleRoutes(next);
+  };
+
+  const selectAllRoutes = () => {
+    setVisibleRoutes(new Set(routes.map(r => r.id)));
+  };
+
+  const deselectAllRoutes = () => {
+    setVisibleRoutes(new Set());
   };
 
   const IconComponent = ({ name }) => {
@@ -671,6 +715,10 @@ const App = () => {
                   />
                 </div>
                 <div className="section-title">{t("categories")}</div>
+                <div className="select-all-buttons">
+                  <button className="select-all-btn" onClick={selectAllCategories}>{t("selectAll")}</button>
+                  <button className="deselect-all-btn" onClick={deselectAllCategories}>{t("deselectAll")}</button>
+                </div>
                 {categories.map(cat => (
                   <div key={cat.id} className="list-item" onClick={() => toggleCat(cat.id)}>
                     <div className="item-left">
@@ -706,6 +754,10 @@ const App = () => {
             {activeTab === "routes" && (
               <>
                 <div className="section-title">{t("transitLayers")}</div>
+                <div className="select-all-buttons">
+                  <button className="select-all-btn" onClick={selectAllRoutes}>{t("selectAll")}</button>
+                  <button className="deselect-all-btn" onClick={deselectAllRoutes}>{t("deselectAll")}</button>
+                </div>
                 {routes.map(route => (
                   <div key={route.id} className="list-item" onClick={() => toggleRoute(route.id)}>
                     <div className="item-left">

@@ -52,7 +52,9 @@ export const translations = {
         cat_parks: "Parks & Gardens",
         cat_entertainment: "Entertainment",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Select All",
+        deselectAll: "Deselect All"
     },
     es: {
         brand: "Expath",
@@ -92,7 +94,9 @@ export const translations = {
         cat_parks: "Parques y Jardines",
         cat_entertainment: "Ocio y Cultura",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Seleccionar Todo",
+        deselectAll: "Deseleccionar Todo"
     },
     ru: {
         brand: "Expath",
@@ -132,7 +136,9 @@ export const translations = {
         cat_parks: "Парки и сады",
         cat_entertainment: "Развлечения",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Выбрать все",
+        deselectAll: "Снять выделение"
     },
     fr: {
         brand: "Expath",
@@ -172,7 +178,9 @@ export const translations = {
         cat_parks: "Parcs et Jardins",
         cat_entertainment: "Divertissement",
         googleMaps: "Google Maps",
-        appleMaps: "Plans (Apple)"
+        appleMaps: "Plans (Apple)",
+        selectAll: "Tout sélectionner",
+        deselectAll: "Tout désélectionner"
     },
     pt: {
         brand: "Expath",
@@ -212,7 +220,9 @@ export const translations = {
         cat_parks: "Parques e Jardins",
         cat_entertainment: "Entretenimento",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Selecionar tudo",
+        deselectAll: "Desselecionar tudo"
     },
     pl: {
         brand: "Expath",
@@ -252,7 +262,9 @@ export const translations = {
         cat_parks: "Parki i Ogrody",
         cat_entertainment: "Rozrywka",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Zaznacz wszystko",
+        deselectAll: "Odznacz wszystko"
     },
     uk: {
         brand: "Expath",
@@ -292,7 +304,9 @@ export const translations = {
         cat_parks: "Парки та сади",
         cat_entertainment: "Розваги",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Вибрати все",
+        deselectAll: "Зняти виділення"
     },
     ar: {
         brand: "Expath",
@@ -332,7 +346,9 @@ export const translations = {
         cat_parks: "الحدائق والمتنزهات",
         cat_entertainment: "الترفيه",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "تحديد الكل",
+        deselectAll: "إلغاء تحديد الكل"
     },
     hr: {
         brand: "Expath",
@@ -372,7 +388,9 @@ export const translations = {
         cat_parks: "Parkovi i vrtovi",
         cat_entertainment: "Zabava",
         googleMaps: "Google Maps",
-        appleMaps: "Apple Maps"
+        appleMaps: "Apple Maps",
+        selectAll: "Odaberi sve",
+        deselectAll: "Odznači sve"
     }
 };
 
