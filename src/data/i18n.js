@@ -54,7 +54,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Select All",
-        deselectAll: "Deselect All"
+        deselectAll: "Deselect All",
+        faq_title: "Frequently Asked Questions",
+        faq_intro: "Find quick answers about transport, tickets, and visiting Valencia."
     },
     es: {
         brand: "Expath",
@@ -96,7 +98,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Seleccionar Todo",
-        deselectAll: "Deseleccionar Todo"
+        deselectAll: "Deseleccionar Todo",
+        faq_title: "Preguntas Frecuentes",
+        faq_intro: "Encuentra respuestas rápidas sobre transporte, billetes y visitar Valencia."
     },
     ru: {
         brand: "Expath",
@@ -138,7 +142,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Выбрать все",
-        deselectAll: "Снять выделение"
+        deselectAll: "Снять выделение",
+        faq_title: "Часто задаваемые вопросы",
+        faq_intro: "Найдите быстрые ответы о транспорте, билетах и посещении Валенсии."
     },
     fr: {
         brand: "Expath",
@@ -180,7 +186,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Plans (Apple)",
         selectAll: "Tout sélectionner",
-        deselectAll: "Tout désélectionner"
+        deselectAll: "Tout désélectionner",
+        faq_title: "Questions Fréquemment Posées",
+        faq_intro: "Trouvez des réponses rapides sur les transports, les billets et la visite de Valence."
     },
     pt: {
         brand: "Expath",
@@ -222,7 +230,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Selecionar tudo",
-        deselectAll: "Desselecionar tudo"
+        deselectAll: "Desselecionar tudo",
+        faq_title: "Perguntas Frequentes",
+        faq_intro: "Encontre respostas rápidas sobre transporte, bilhetes e visitar Valência."
     },
     pl: {
         brand: "Expath",
@@ -264,7 +274,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Zaznacz wszystko",
-        deselectAll: "Odznacz wszystko"
+        deselectAll: "Odznacz wszystko",
+        faq_title: "Często Zadawane Pytania",
+        faq_intro: "Znajdź szybkie odpowiedzi na pytania dotyczące transportu, biletów i odwiedzin w Walencji."
     },
     uk: {
         brand: "Expath",
@@ -306,7 +318,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Вибрати все",
-        deselectAll: "Зняти виділення"
+        deselectAll: "Зняти виділення",
+        faq_title: "Часті питання",
+        faq_intro: "Знайдіть швидкі відповіді про транспорт, квитки та відвідування Валенсії."
     },
     ar: {
         brand: "Expath",
@@ -348,7 +362,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "تحديد الكل",
-        deselectAll: "إلغاء تحديد الكل"
+        deselectAll: "إلغاء تحديد الكل",
+        faq_title: "الأسئلة الشائعة",
+        faq_intro: "اعثر على إجابات سريعة حول النقل والتذاكر وزيارة فالنسيا."
     },
     hr: {
         brand: "Expath",
@@ -390,7 +406,9 @@ export const translations = {
         googleMaps: "Google Maps",
         appleMaps: "Apple Maps",
         selectAll: "Odaberi sve",
-        deselectAll: "Odznači sve"
+        deselectAll: "Odznači sve",
+        faq_title: "Često postavljana pitanja",
+        faq_intro: "Pronađite brze odgovore o prijevozu, kartama i posjetu Valenciji."
     }
 };
 
